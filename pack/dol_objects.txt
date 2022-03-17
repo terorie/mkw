@@ -67,7 +67,7 @@ out/dol/text_80085938_80090fc0.o
 out/snd_dvdSoundArchive.o
 out/dol/text_80091418_800aef60.o
 out/utList.o
-out/dol/text_800af1a0_800ccb4c.o
+out/dol/text_800af210_800ccb4c.o
 out/dol/data_80274338_80275700.o
 out/dwc_error.o
 out/dol/text_800ccc80_800ef378.o
