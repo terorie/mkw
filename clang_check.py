@@ -9,10 +9,13 @@ import sys
 COMMONFLAGS = [
     "-c",
     "-fshort-wchar",
-    "-I", "source",
-    "-I", "source/platform",
+    "-I",
+    "source",
+    "-I",
+    "source/platform",
     "-nostdinc",
-    "-target", "ppc-none-eabi",
+    "-target",
+    "ppc-none-eabi",
     "-Wall",
     "-Wno-unused-private-field",
     "-Wextra",
@@ -24,13 +27,15 @@ COMMONFLAGS = [
 ]
 
 CFLAGS = COMMONFLAGS + [
-    "-x", "c",
+    "-x",
+    "c",
     "-std=c18",
 ]
 
 CXXFLAGS = COMMONFLAGS + [
     "-fno-exceptions",
-    "-x", "c++",
+    "-x",
+    "c++",
 ]
 
 if sys.platform == "win32" or sys.platform == "msys":
@@ -42,9 +47,9 @@ else:
 def check_headers(extension, flags):
     source = ""
     for path in Path("source").rglob("*." + extension):
-        source += "#include \""
+        source += '#include "'
         source += str(path).removeprefix("source/")
-        source += "\"\n"
+        source += '"\n'
 
     process = subprocess.run(
         ["clang"] + flags + ["-", "-o", DEV_NULL],
@@ -53,6 +58,7 @@ def check_headers(extension, flags):
     )
 
     return process.returncode
+
 
 c_ret = check_headers("h", CFLAGS)
 cpp_ret = check_headers("hpp", CXXFLAGS)

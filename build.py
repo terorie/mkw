@@ -45,7 +45,8 @@ parser.add_argument(
     "--single_file",
     type=str,
     default=None,
-    help="For quick iteration on a single file before we get full incremental builds")
+    help="For quick iteration on a single file before we get full incremental builds",
+)
 args = parser.parse_args()
 # Start by running gen_asm.
 gen_asm(args.regen_asm)
@@ -103,11 +104,11 @@ CWCC_PATHS = {
     # This version has the infuriating bug where random
     # nops are inserted into your code.
     "4201_127": os.path.join(".", "tools", "4201_142", "mwcceppc.exe"),
-
     # The script doesn't automatically make this backup, because Windows may block attempts to run an
     # executable file created from python's process without UAC override (WinError 740).
-    "4201_127_unpatched": os.path.join(".", "tools", "4201_142", "mwcceppc_unpatched.exe"),
-
+    "4201_127_unpatched": os.path.join(
+        ".", "tools", "4201_142", "mwcceppc_unpatched.exe"
+    ),
     # For most of RVL
     # We actually have the correct version
     "4199_60831": os.path.join(".", "tools", "4199_60831", "mwcceppc.exe"),
@@ -116,8 +117,9 @@ CWCC_PATHS = {
     "4199_60726": os.path.join(".", "tools", "4199_60831", "mwcceppc.exe"),
 }
 
+
 def patch_compilers():
-    with open(CWCC_PATHS["4201_127"], 'rb') as og:
+    with open(CWCC_PATHS["4201_127"], "rb") as og:
         ogbytes = bytearray(og.read())
 
     patches = [
@@ -125,22 +127,23 @@ def patch_compilers():
         # Found by stebler.
         #
         {
-            'at': 0x1A8540,
-            'before': bytes([0x66, 0x83, 0x3D, 0x40, 0xF3]),
-            'after':  bytes([0xE9, 0x8B, 0x0D, 0x00, 0x00])
+            "at": 0x1A8540,
+            "before": bytes([0x66, 0x83, 0x3D, 0x40, 0xF3]),
+            "after": bytes([0xE9, 0x8B, 0x0D, 0x00, 0x00]),
         }
     ]
 
     for patch in patches:
-        assert len(patch['before']) == len(patch['after'])
-        patch_size = len(patch['before'])
+        assert len(patch["before"]) == len(patch["after"])
+        patch_size = len(patch["before"])
 
-        before = ogbytes[patch['at']:patch['at']+patch_size]
-        assert before == patch['after'] or before == patch['before']
-        ogbytes[patch['at']:patch['at']+patch_size] = patch['after']
+        before = ogbytes[patch["at"] : patch["at"] + patch_size]
+        assert before == patch["after"] or before == patch["before"]
+        ogbytes[patch["at"] : patch["at"] + patch_size] = patch["after"]
 
-    with open(CWCC_PATHS["4201_127"], 'wb') as new:
+    with open(CWCC_PATHS["4201_127"], "wb") as new:
         new.write(ogbytes)
+
 
 patch_compilers()
 
@@ -324,9 +327,15 @@ def compile_sources():
         queue_compile_source(Path(src.src), src.cc, src.opts)
 
     if args.single_file:
-        print(colored('[NOTE] Only compiling sources matching "%s".' % args.single_file, "red"))
+        print(
+            colored(
+                '[NOTE] Only compiling sources matching "%s".' % args.single_file, "red"
+            )
+        )
         global gSourceQueue
-        gSourceQueue = list(filter(lambda x: args.single_file in str(x[0]), gSourceQueue))
+        gSourceQueue = list(
+            filter(lambda x: args.single_file in str(x[0]), gSourceQueue)
+        )
 
     compile_queued_sources()
 

@@ -7,13 +7,13 @@ from dataclasses import dataclass
 from itertools import chain
 
 
-HOSTSYS_OPTS = '-ipa file -rostr -sdata 0 -sdata2 0'
-RVL_OPTS = '-ipa file'
-MSL_LIBC_OPTS = '-ipa file'
-NW4R_OPTS = '-ipa file -inline auto -O4,p'
+HOSTSYS_OPTS = "-ipa file -rostr -sdata 0 -sdata2 0"
+RVL_OPTS = "-ipa file"
+MSL_LIBC_OPTS = "-ipa file"
+fNW4R_OPTS = "-ipa file -inline auto -O4,p"
 SPY_OPTS = RVL_OPTS + " -w nounusedexpr -w nounusedarg"
-EGG_OPTS = '-ipa function -rostr'
-REL_OPTS = HOSTSYS_OPTS + " -pragma \"legacy_struct_alignment on\""
+EGG_OPTS = "-ipa function -rostr"
+REL_OPTS = HOSTSYS_OPTS + ' -pragma "legacy_struct_alignment on"'
 
 
 @dataclass
@@ -21,6 +21,9 @@ class Source:
     src: str
     cc: str
     opts: str
+
+
+# fmt: off
 
 
 #

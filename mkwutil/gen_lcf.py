@@ -1,6 +1,6 @@
 import argparse
 import jinja2
-from pathlib import Path,  PurePosixPath, PureWindowsPath
+from pathlib import Path, PurePosixPath, PureWindowsPath
 import re
 import sys
 
@@ -17,6 +17,7 @@ def format_path(p):
     if sys.platform == "win32" or sys.platform == "msys":
         return str(PureWindowsPath(p))
     return f'"{PurePosixPath(p)}"'
+
 
 def gen_lcf(
     src: Path,

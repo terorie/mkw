@@ -403,7 +403,7 @@ COLOR_ROTATION: List[str] = [
     Fore.LIGHTBLACK_EX,
 ]
 
-BUFFER_CMD: List[str] = ["tail", "-c", str(10 ** 9)]
+BUFFER_CMD: List[str] = ["tail", "-c", str(10**9)]
 
 # -S truncates long lines instead of wrapping them
 # -R interprets color escape sequences
@@ -1195,7 +1195,7 @@ def diff_sequences(
 ) -> List[Tuple[str, int, int, int, int]]:
     if (
         algorithm != "levenshtein"
-        or len(seq1) * len(seq2) > 4 * 10 ** 8
+        or len(seq1) * len(seq2) > 4 * 10**8
         or len(seq1) + len(seq2) >= 0x110000
     ):
         return diff_sequences_difflib(seq1, seq2)
