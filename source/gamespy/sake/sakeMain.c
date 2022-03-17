@@ -279,7 +279,7 @@ gsi_bool SAKE_CALL sakeGetFileDownloadURL(SAKE sake, int fileId, gsi_char url[SA
 	if (gSakeDownloadUrlOverride[0] != '\0')
 	{
     // modification, injected fileId here.
-		rcode = _tsnprintf(url, SAKE_MAX_URL_LENGTH, _T("%s?fileid=%d&gameid=%d&pid=%d"), 
+		rcode = _tsnprintf(url, SAKE_MAX_URL_LENGTH, _T("%s?fileid=%d&gameid=%d&pid=%d"),
 			gSakeDownloadUrlOverride, fileId, sake->mGameId, sake->mProfileId);
 	}
 	else
@@ -325,7 +325,7 @@ gsi_bool SAKE_CALL sakeGetFileUploadURL(SAKE sake, gsi_char url[SAKE_MAX_URL_LEN
 
 	if (gSakeUploadUrlOverride[0] != '\0')
 	{
-		rcode = _tsnprintf(url, SAKE_MAX_URL_LENGTH, _T("%s?gameid=%d&pid=%d"), 
+		rcode = _tsnprintf(url, SAKE_MAX_URL_LENGTH, _T("%s?gameid=%d&pid=%d"),
 			gSakeUploadUrlOverride, sake->mGameId, sake->mProfileId);
 	}
 	else
