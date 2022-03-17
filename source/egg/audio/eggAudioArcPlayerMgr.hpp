@@ -9,7 +9,8 @@ namespace EGG {
 class ArcPlayer {
 public:
   // PAL: 0x80210590..0x80210624
-  ArcPlayer(nw4r::snd::SoundHeap* heap);
+  //ArcPlayer(void*); // ICE
+  void ct(nw4r::snd::SoundHeap* heap);
   // PAL: 0x80210624..0x80210698
   ~ArcPlayer();
 

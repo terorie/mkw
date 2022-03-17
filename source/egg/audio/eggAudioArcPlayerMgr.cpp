@@ -80,7 +80,7 @@ extern UNKNOWN_FUNCTION(readData__Q23EGG7CntFileFPvll);
 // PAL: 0x80210590..0x80210624
 MARK_BINARY_BLOB(__ct__Q23EGG9ArcPlayerFPQ34nw4r3snd9SoundHeap, 0x80210590,
                  0x80210624);
-asm ArcPlayer::ArcPlayer(nw4r::snd::SoundHeap* heap) {
+asm void ArcPlayer::ct(nw4r::snd::SoundHeap* heap) {
   // clang-format off
   nofralloc;
   stwu r1, -0x20(r1);

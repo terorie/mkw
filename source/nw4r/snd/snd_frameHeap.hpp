@@ -11,7 +11,7 @@ namespace detail {
 struct FrameHeap {
   u32 _unk00;
   ut::List _unk04;
-}
+};
 
 } // namespace detail
 } // namespace snd
