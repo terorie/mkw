@@ -93,5 +93,16 @@ The dead-stripping feature can be re-enabled by:
 - Add your new build target to `mkwutil/sources.py`.
 - Run `build.py`.
 
+### pre-commit
+
+This project uses [pre-commit](https://pre-commit.com/) ensure code adheres to formatting rules.
+
+To enable, run:
+
+```
+pre-commit install
+pre-commit run --all-files
+```
+
 ## .rel support
 Most of Mario Kart Wii's game code is located inside a relocatable module (StaticR.rel for release builds). The decompilation builds this.
