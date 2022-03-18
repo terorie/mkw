@@ -22,10 +22,10 @@ void Fog::Init() {
       rFogData.FLOATS_0x4[i] = 0.0f;
     }
 
-    rFogData.mColor.mChannels.a = 0;
-    rFogData.mColor.mChannels.b = 0;
-    rFogData.mColor.mChannels.g = 0;
-    rFogData.mColor.mChannels.r = 0;
+    rFogData.mColor.a = 0;
+    rFogData.mColor.b = 0;
+    rFogData.mColor.g = 0;
+    rFogData.mColor.r = 0;
 
     rFogData.BYTE_0x18 = 0;
     rFogData.BYTE_0x19 = 0;

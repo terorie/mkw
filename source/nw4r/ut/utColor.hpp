@@ -11,52 +11,45 @@
 namespace nw4r {
 namespace ut {
 
-struct Color {
-  GXColor mChannels;
+struct Color : public GXColor {
+  Color() { operator=(0xFFFFFFFF); }
 
-  inline u32& ToU32ref() { return *reinterpret_cast<u32*>(this); }
+  Color(u32 color) { operator=(color); }
 
-  inline const u32& ToU32ref() const {
-    return *reinterpret_cast<const u32*>(this);
+  Color(int _r, int _g, int _b, int _a = 0xFF) { Set(_r, _g, _b, _a); }
+
+  inline Color(const Color& other) {
+    r = other.r;
+    g = other.g;
+    b = other.b;
+    a = other.a;
   }
 
-  inline Color& operator=(u32 value) {
+  ~Color() {}
+
+  Color& operator=(u32 value) {
     ToU32ref() = value;
     return *this;
   }
 
-  inline Color() { *this = 0xFFFFFFFF; }
+  operator u32() const { return ToU32ref(); }
 
-  inline Color(const Color& other) {
-    mChannels.r = other.mChannels.r;
-    mChannels.g = other.mChannels.g;
-    mChannels.b = other.mChannels.b;
-    mChannels.a = other.mChannels.a;
+  u32 ToU32() const { return ToU32ref(); }
+
+  void Set(int _r, int _g, int _b, int _a = 0xFF) {
+    r = static_cast<u8>(_r);
+    g = static_cast<u8>(_g);
+    b = static_cast<u8>(_b);
+    a = static_cast<u8>(_a);
   }
 
-  inline Color& operator=(const Color& other) {
-    mChannels.r = other.mChannels.r;
-    mChannels.g = other.mChannels.g;
-    mChannels.b = other.mChannels.b;
-    mChannels.a = other.mChannels.a;
-    return *this;
-  }
+  void Set(Color other) { operator=(other); }
 
-  inline Color(u32 rgba) { *this = rgba; }
+protected:
+  u32& ToU32ref() { return *reinterpret_cast<u32*>(this); }
 
-  inline Color(int red, int green, int blue, int alpha) {
-    mChannels.r = red;
-    mChannels.g = green;
-    mChannels.b = blue;
-    mChannels.a = alpha;
-  }
-
-  inline operator u32() const { return ToU32ref(); }
-
-  inline operator GXColor() const { return mChannels; }
-
-  inline ~Color() {}
-};
+  const u32& ToU32ref() const { return *reinterpret_cast<const u32*>(this); }
+} __attribute__((aligned(4)));
 
 } // namespace ut
 } // namespace nw4r
