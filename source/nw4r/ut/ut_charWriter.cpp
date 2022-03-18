@@ -13,23 +13,6 @@ namespace {
 inline void SetupGXCommon() {
   static const nw4r::ut::Color fog = 0;
 
-  /*asm {
-    lfs f1, 0.0f;
-    addi r4, r1, 0x18;
-    lbz r3, fog.r;
-    lbz r6, fog.g;
-    fmr f2, f1;
-    lbz r5, fog.b;
-    fmr f3, f1;
-    lbz r0, fog.a;
-    fmr f4, f1;
-    stb r3, 24(r1);
-    li r3, 0;
-    stb r6, 25(r1);
-    stb r5, 26(r1);
-    stb r0, 27(r1);
-    bl GXSetFog;
-  }*/
   GXSetFog(0, 0.0f, 0.0f, 0.0f, 0.0f, fog);
   GXSetTevSwapModeTable(GX_TEV_SWAP_SEL_0, 0, 1, 2, 3);
   GXSetZTexture(0, 17, 0);
