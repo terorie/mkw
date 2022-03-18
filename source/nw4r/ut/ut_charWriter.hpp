@@ -151,10 +151,14 @@ public:
     mVertexColor.mBottomRight =
         (mGradationMode == GradMode_None) ? mTextColor.mStart : mTextColor.mEnd;
 
-    mVertexColor.mTopLeft.a = (mVertexColor.mTopLeft.a * _unk42) / 0xFF,
-    mVertexColor.mTopRight.a = (mVertexColor.mTopRight.a * _unk42) / 0xFF;
-    mVertexColor.mBottomLeft.a = (mVertexColor.mBottomLeft.a * _unk42) / 0xFF;
-    mVertexColor.mBottomRight.a = (mVertexColor.mBottomRight.a * _unk42) / 0xFF;
+    mVertexColor.mTopLeft.mChannels.a =
+        (mVertexColor.mTopLeft.mChannels.a * _unk42) / 0xFF,
+    mVertexColor.mTopRight.mChannels.a =
+        (mVertexColor.mTopRight.mChannels.a * _unk42) / 0xFF;
+    mVertexColor.mBottomLeft.mChannels.a =
+        (mVertexColor.mBottomLeft.mChannels.a * _unk42) / 0xFF;
+    mVertexColor.mBottomRight.mChannels.a =
+        (mVertexColor.mBottomRight.mChannels.a * _unk42) / 0xFF;
   }
 };
 
