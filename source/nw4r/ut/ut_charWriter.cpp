@@ -9,6 +9,8 @@
 #include <rvl/gx/gxTexture.h>
 #include <rvl/gx/gxVert.h>
 
+#pragma legacy_struct_alignment on
+
 namespace {
 inline void SetupGXCommon() {
   static const nw4r::ut::Color fog = 0;
@@ -117,13 +119,13 @@ void CharWriter::SetupGX() {
   }
 }
 
+void CharWriter::SetFontSize(float width, float height) {
+  SetScale(width / mFont->GetWidth(), height / mFont->GetHeight());
+}
+
 void CharWriter::SetFontSize(float height) {
   const float scale = height / mFont->GetHeight();
   SetScale(scale);
-}
-
-void CharWriter::SetFontSize(float width, float height) {
-  SetScale(width / mFont->GetWidth(), height / mFont->GetHeight());
 }
 
 float CharWriter::GetFontWidth() const { return mScale.x * mFont->GetWidth(); }

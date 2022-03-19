@@ -45,7 +45,7 @@ out/dol/text_800213e4_8002156c.o
 out/eabi.o
 out/dol/text_80021ba8_8006a0c0.o
 out/dol/bss_802a6c78_802f1320.o
-out/dol/sbss_803860b0_8038627c.o
+out/dol/sbss_803860b0_80386278.o
 out/dol/sdata2_80386fa0_80387cac.o
 out/g3d_camera.o
 out/dol/text_8006a518_800774d0.o
@@ -73,7 +73,7 @@ out/dol/sdata2_80387eb4_803882e0.o
 out/ut_charWriter.o
 out/dol/text_800b4374_800ccb4c.o
 out/dol/bss_802f1330_802f2338.o
-out/dol/sbss_80386284_803862a8.o
+out/dol/sbss_8038628d_803862a8.o
 out/dwc_error.o
 out/dol/text_800ccc80_800ef378.o
 out/darray.o
