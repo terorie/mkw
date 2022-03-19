@@ -53,7 +53,7 @@ struct Color {
   inline operator GXColor() const { return mChannels; }
 
   inline ~Color() {}
-};
+} __attribute__((aligned(4)));
 
 } // namespace ut
 } // namespace nw4r
